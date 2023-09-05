@@ -33,9 +33,9 @@ source_group("CL" ${SHADER})
 add_library(CLW STATIC ${SOURCES} ${SHADER})
 
 if (UNIX)
-    target_compile_options(CLW PUBLIC -std=c++11 -fPIC)
+    target_compile_options(CLW PUBLIC -fPIC)
 elseif (APPLE)
-    target_compile_options(CLW PUBLIC -std=c++11 -stdlib=libc++)
+    target_compile_options(CLW PUBLIC -stdlib=libc++)
 endif (UNIX)
 
 
