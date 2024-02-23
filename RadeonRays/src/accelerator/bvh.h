@@ -116,6 +116,33 @@ namespace RadeonRays
             kLeaf
         };
 
+        struct Node
+        {
+            // Node bounds in world space
+            bbox bounds;
+            // Type of the node
+            NodeType type;
+            // Node index in a complete tree
+            int index;
+
+            union
+            {
+                // For internal nodes: left and right children
+                struct
+                {
+                    Node* lc;
+                    Node* rc;
+                };
+
+                // For leaves: starting primitive index and number of primitives
+                struct
+                {
+                    int startidx;
+                    int numprims;
+                };
+            };
+        };
+
         // Bvh nodes
         std::vector<Node> m_nodes;
         // Identifiers of leaf primitives
@@ -146,33 +173,6 @@ namespace RadeonRays
 
         friend class PlainBvhTranslator;
         friend class FatNodeBvhTranslator;
-    };
-
-    struct Bvh::Node
-    {
-        // Node bounds in world space
-        bbox bounds;
-        // Type of the node
-        NodeType type;
-        // Node index in a complete tree
-        int index;
-
-        union
-        {
-            // For internal nodes: left and right children
-            struct
-            {
-                Node* lc;
-                Node* rc;
-            };
-
-            // For leaves: starting primitive index and number of primitives
-            struct
-            {
-                int startidx;
-                int numprims;
-            };
-        };
     };
 
     inline int const* Bvh::GetIndices() const
