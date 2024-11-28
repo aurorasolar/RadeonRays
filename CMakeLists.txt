@@ -48,6 +48,9 @@ include_directories(simde)
 add_definitions(-DSIMDE_ENABLE_NATIVE_ALIASES)
 
 if (RR_USE_OPENCL)
+if (!APPLE)
+    find_package(CUDA REQUIRED)
+endif (!APPLE)
     find_package(OpenCL REQUIRED)
     add_definitions(-DUSE_OPENCL=1 -DCL_TARGET_OPENCL_VERSION=120)
     
