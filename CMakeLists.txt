@@ -51,6 +51,16 @@ if (RR_USE_OPENCL)
     #find_package(CUDA REQUIRED)
     find_package(OpenCL 1.2 REQUIRED)
 
+    message(OpenCL_INCLUDE_DIRS="${OpenCL_INCLUDE_DIRS}")
+    message(OpenCL_LIBRARIES="${OpenCL_LIBRARIES}")
+    message(OpenCL_VERSION_STRING="${OpenCL_VERSION_STRING}")
+    message(OpenCL_VERSION_MAJOR="${OpenCL_VERSION_MAJOR}")
+    message(OpenCL_VERSION_MINOR="${OpenCL_VERSION_MINOR}")
+    message(OpenCL_INCLUDE_DIR="${OpenCL_INCLUDE_DIR}")
+    message(OpenCL_LIBRARY="${OpenCL_LIBRARY}")
+
+
+
     add_definitions(-DUSE_OPENCL=1 -DCL_TARGET_OPENCL_VERSION=120)
     
     add_subdirectory(CLW)
