@@ -45,7 +45,7 @@ if (RR_ALLOW_CPU_DEVICES)
 endif(RR_ALLOW_CPU_DEVICES)
 
 #CLW always embed its kernels
-target_compile_definitions(CLW PRIVATE RR_EMBED_KERNELS=1)
+target_compile_definitions(CLW PRIVATE RR_EMBED_KERNELS=1 CL_TARGET_OPENCL_VERSION=120 CL_VERSION_1_2=1)
 add_custom_command(
     OUTPUT "${CLW_BINARY_DIR}/clwkernels_cl.h"
     COMMAND "${PYTHON_EXECUTABLE}" "${STRINGIFY_SCRIPT}" "${CLW_SOURCE_DIR}/CL/" .cl opencl > "${CLW_BINARY_DIR}/clwkernels_cl.h"

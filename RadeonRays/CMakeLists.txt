@@ -201,7 +201,7 @@ endif (RR_ENABLE_BACKFACE_CULL)
 
 if (RR_USE_OPENCL)
     target_link_libraries(RadeonRays PUBLIC OpenCL::OpenCL)
-    target_compile_definitions(RadeonRays PUBLIC USE_OPENCL=1)
+    target_compile_definitions(RadeonRays PUBLIC USE_OPENCL=1 CL_TARGET_OPENCL_VERSION=120 CL_VERSION_1_2=1 )
 endif (RR_USE_OPENCL)
 
 if (RR_USE_VULKAN)

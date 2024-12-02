@@ -49,8 +49,8 @@ add_definitions(-DSIMDE_ENABLE_NATIVE_ALIASES)
 
 if (RR_USE_OPENCL)
     #find_package(CUDA REQUIRED)
-    find_package(OpenCL 1.2 EXACT REQUIRED)
-    
+    find_package(OpenCL 1.2 REQUIRED)
+
     add_definitions(-DUSE_OPENCL=1 -DCL_TARGET_OPENCL_VERSION=120)
     
     add_subdirectory(CLW)
